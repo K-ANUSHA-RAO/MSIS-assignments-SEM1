@@ -14,7 +14,7 @@ struct _user_data_
     int screen_number;
     int selected_seat_numbers[MAX_SEATS];
     int total_booked_seats;
-    char seat_class;
+    char seat_class[NAME_SIZE];
     char promotion_code[CODE_SIZE];
     char selected_show_time;
 
@@ -30,9 +30,17 @@ struct _ticket_booking_
 };
 typedef struct _ticket_booking_ Ticket;
 
+struct _seat_
+{
+    int seat_number;
+    char seat_status;
+};
+typedef struct _seat_ Seat;
+
 struct _seat_class_
 {
     char class_name[NAME_SIZE];
+    Seat seats[SEAT_SIZE];
     int total_seat_count;
     int current_seat_count;
 };
@@ -50,16 +58,14 @@ typedef struct _screen_ Screen;
 //initialize data for seat class and count
 Screen * intialize_screen(int no_of_seat_class);
 
-//insert seat class like VIP,Gold,Silver along
+//insert seat class like VIP,Gold,Silver
 int insert_seat_class(Screen*, Seat_class data);
-
 
 //take input from user and return ticket
 Ticket book_movie_ticket(User user_data);
 
 //view available seats for booking
 void display_available_seats(Screen*);
-
 
 //cancel booked seat
 void cancel_booked_seat(char[ID_SIZE] bookingId);
