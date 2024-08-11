@@ -5,6 +5,8 @@
 #define MOBILE_SIZE 11
 #define ID_SIZE 8
 #define CODE_SIZE 10
+#define MAX_SEATS 20
+#define SEAT_COUNT 100
 
 
 struct _user_data_
@@ -33,14 +35,14 @@ typedef struct _ticket_booking_ Ticket;
 struct _seat_
 {
     int seat_number;
-    char seat_status;
+    char seat_status;//A-Available B-Booked
 };
 typedef struct _seat_ Seat;
 
 struct _seat_class_
 {
     char class_name[NAME_SIZE];
-    Seat seats[SEAT_SIZE];
+    Seat seats[SEAT_COUNT];
     int total_seat_count;
     int current_seat_count;
 };
