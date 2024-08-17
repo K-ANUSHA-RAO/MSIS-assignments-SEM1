@@ -1,5 +1,16 @@
 # depslib dependency file v1.0
-1723108580 source:d:\msis\assignments\ds lab\assignment 1\movieticketbookingapplication\main.c
+1723893981 source:d:\msis\assignments\ds lab\assignment 1\movieticketbookingapplication\main.c
 	<stdio.h>
 	<stdlib.h>
+	<assert.h>
+	<string.h>
+	"operations.c"
+
+1723894999 d:\msis\assignments\ds lab\assignment 1\movieticketbookingapplication\operations.c
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"commonHeader.h"
+
+1723821404 d:\msis\assignments\ds lab\assignment 1\movieticketbookingapplication\commonheader.h
 

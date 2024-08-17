@@ -1,5 +1,6 @@
 #ifndef COMMONHEADER_H_INCLUDED
 #define COMMONHEADER_H_INCLUDED
+
 #define MAX_SEAT_CLASS 5
 #define NAME_SIZE 20
 #define MOBILE_SIZE 11
@@ -7,12 +8,17 @@
 #define CODE_SIZE 10
 #define MAX_SEATS 20
 #define SEAT_COUNT 100
+#define MEM_ALLOC_FAIL NULL
+#define SCREEN_COUNT 3
+#define FULL -1
+#define SUCCESS 1
+#define MAX_BOOKINGS 100
 
 
 struct _user_data_
 {
     char mobile_number[MOBILE_SIZE];
-    char user_name[NAME_SIZE]
+    char user_name[NAME_SIZE];
     int screen_number;
     int selected_seat_numbers[MAX_SEATS];
     int total_booked_seats;
@@ -35,7 +41,7 @@ typedef struct _ticket_booking_ Ticket;
 struct _seat_
 {
     int seat_number;
-    char seat_status;//A-Available B-Booked
+    char seat_status;// A-Available B-Booked
 };
 typedef struct _seat_ Seat;
 
@@ -57,19 +63,19 @@ struct _screen_
 };
 typedef struct _screen_ Screen;
 
-//initialize data for seat class and count
+// Initialize data for seat class and count
 Screen * intialize_screen(int no_of_seat_class);
 
-//insert seat class like VIP,Gold,Silver
+// Insert seat class like VIP, Gold, Silver and assign seat numbers to each class
 int insert_seat_class(Screen*, Seat_class data);
 
-//take input from user and return ticket
-Ticket book_movie_ticket(User user_data);
+// Take input from user and return ticket
+Ticket book_movie_ticket(Screen* screen, User user_data, Ticket* tickets, int* num_bookings);
 
-//view available seats for booking
+// View available seats for booking
 void display_available_seats(Screen*);
 
-//cancel booked seat
-void cancel_booked_seat(char[ID_SIZE] bookingId);
+// Cancel booked seat
+void cancel_booked_seat(char bookingId[ID_SIZE], Ticket* bookings, int* num_bookings, Screen screens[SCREEN_COUNT]);
 
 #endif // COMMONHEADER_H_INCLUDED
